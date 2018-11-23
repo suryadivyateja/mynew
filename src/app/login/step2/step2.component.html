@@ -1,8 +1,19 @@
 <div class="cs1">
     <h3 class="text-center" style="margin:0px !important">Password</h3>
     <p class="text-muted text-center">Provide the email address / mobile credentials that are provided at the time of registration.</p>
-    <form #f="ngForm" (ngSubmit)="f.form.valid && step2()" id="s1">
-      <input type="text" name="title" nz-input placeholder="input course title" [(ngModel)]="password" #t="ngModel" [ngClass]="{'is-invalid':t.errors && (t.dirty || t.touched || f.submitted)}" required >
+    <form #f="ngForm" (ngSubmit)="f.valid && login()" id="s1">
+      <nz-input-group [nzSuffix]="un">
+        <input type="password" name="password" nz-input placeholder="Enter the password" [(ngModel)]="password" #t="ngModel" [ngClass]="{'is-invalid':t.errors && (t.dirty || t.touched || f.submitted)}" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" validUserpassword required >
+        <ng-template #un>
+          <i class="anticon anticon-lock" *ngIf="t.pristine && t.untouched && !f.submitted"></i>
+          <i class="anticon anticon-close-circle" *ngIf="t.errors && (t.dirty ||t.touched || f.submitted)" style="color:red" nz-tooltip [nzTitle]="ntup" [nzVisible]="true"></i>
+        </ng-template>
+        <ng-template #ntup>
+          <p *ngIf="t.errors.required" style="margin-bottom:0px !important">password required</p>
+          <p *ngIf="t.errors.pattern" style="margin-bottom:0px !important">Minimum eight characters,<br> at least one uppercase letter,<br> one lowercase letter and one number:</p>
+          <p *ngIf="t.errors.validUserpassword" style="margin-bottom:0px !important">password not matched</p>
+        </ng-template>
+      </nz-input-group>
     </form>
     <div style="float: right;margin-top: 10px;">
       <button nz-button nzType="default" form="s1">Next</button>

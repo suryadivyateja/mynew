@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
+import { ValidUsernameDirective } from './directives/valid-username.directive';
+import { LoginService } from './service/login.service';
+import { ValidUserpasswordDirective } from './directives/valid-userpassword.directive';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,7 +19,7 @@ import en from '@angular/common/locales/en';
     FormsModule,
     NgZorroAntdModule
   ],
-  declarations: [LoginComponent, Step1Component, Step2Component],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  declarations: [LoginComponent, Step1Component, Step2Component,ValidUsernameDirective,ValidUserpasswordDirective],
+  providers: [{ provide: NZ_I18N, useValue: en_US },LoginService],
 })
 export class LoginModule { }

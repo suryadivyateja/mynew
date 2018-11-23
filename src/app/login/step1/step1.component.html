@@ -2,8 +2,18 @@
   <h3 class="text-center" style="margin:0px !important">User Name</h3>
   <p class="text-muted text-center">Provide the email address / mobile credentials that are provided at the time of registration.</p>
   <form #f="ngForm" (ngSubmit)="f.form.valid && step1()" id="s1">
-    <input type="text" name="title" nz-input placeholder="input course title" [(ngModel)]="username" #t="ngModel" [ngClass]="{'is-invalid':t.errors && (t.dirty || t.touched || f.submitted)}" required >
-  </form>
+    <nz-input-group [nzSuffix]="un">
+      <input type="text" nz-input placeholder="Enter the username" name="name" [(ngModel)]="username" #name="ngModel" [ngClass]="{'is-invalid':name.errors && (name.dirty || name.touched || f.submitted)}" pattern="[A-Za-z0-9_\-\.]+\@[A-Za-z0-9_\-\.]+\.[A-Za-z]{2,4}$" required validUsername>
+      <ng-template #un>
+        <i class="anticon anticon-lock" *ngIf="name.pristine && name.untouched && !f.submitted"></i>
+        <i class="anticon anticon-close-circle" *ngIf="name.errors && (name.dirty ||name.touched || f.submitted)" style="color:red" nz-tooltip [nzTitle]="ntup" [nzVisible]="true"></i>
+      </ng-template>
+      <ng-template #ntup>
+        <p *ngIf="name.errors.required" style="margin-bottom:0px !important">username required</p>
+        <p *ngIf="name.errors.pattern" style="margin-bottom:0px !important">email not valid</p>
+        <p *ngIf="name.errors.validUsername" style="margin-bottom:0px !important">username not valid</p>
+      </ng-template>
+      </nz-input-group>  </form>
   <div style="float: right;margin-top: 10px;">
     <button nz-button nzType="default" form="s1">Next</button>
   </div>

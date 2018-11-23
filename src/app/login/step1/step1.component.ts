@@ -9,14 +9,15 @@ import { Router } from '@angular/router';
 })
 export class Step1Component implements OnInit {
 
-  constructor(private ls:LoginService,private router:Router) { }
+  constructor(private ls:LoginService,private router:Router) {
+  }
 username:string;
   ngOnInit() {
-
   }
   step1(){
+    console.log(this.username);
 this.ls.setValue({status:true,value:this.username});
-this.router.navigate(['/login/step2']);
+// this.router.navigate(['/login/step2']);
   }
 
 }
