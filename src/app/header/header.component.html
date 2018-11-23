@@ -1,0 +1,210 @@
+<div class="d-none d-md-flex">
+  <div class="main-header">
+    <div class="main-header-top">
+      <div class="container">
+        <div class="main-header-top-inner">
+          <div class="left-side">
+
+            <div style="padding-right:15px;">
+              <nz-dropdown [nzPlacement]="'bottomLeft'" [nzTrigger]="'click'">
+                <a nz-dropdown *ngIf="currency['show'] === false">{{currency['value']}} <i nz-icon type="down"></i></a>
+                <ul nz-menu>
+                  <ng-template ngFor let-c [ngForOf]="currencies">
+                    <li nz-menu-item *ngIf="c['show']" (click)="changeCurrency(c)">
+                      <a>{{c['name']}}</a>
+                    </li>
+                  </ng-template>
+                </ul>
+              </nz-dropdown>
+            </div>
+            <div>
+              <a> CONTACT US</a>
+            </div>
+          </div>
+          <div class="right-side">
+            <div style="margin-right:15px">
+              <a>SIGN IN</a>
+            </div>
+            <div>
+              <a>CREATE AN ACCOUNT</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+    <div class="main-header-content">
+      <div class="container">
+        <div class="main-header-content-inner">
+          <div class="row" style="width:100%">
+          <div class="search col-md-4">
+            <input type="text" placeholder="Search">
+            <select name="" id="">
+              <option value="">All Categories</option>
+            </select>
+            <a class="search-icon">
+              <i nz-icon type="search" theme="outline"></i>
+            </a>
+          </div>
+          <div class="logo col-md-4">
+            <div class="h3 text-center">
+              BRAND NAME
+            </div>
+          </div>
+          <div class="nots col-md-4">
+            <div class="nots-icons">
+              <div>
+                  <nz-dropdown [nzPlacement]="'bottomRight'">
+                      <a nz-dropdown>
+                        <nz-badge [nzCount]="notCount" [nzOverflowCount]="10">
+                          <a class="head-example"><i nz-icon type="bell" style="font-size:25px"></i></a>
+                        </nz-badge>
+                      </a>
+                      <div class="icon-menu" nz-menu nzSelectable>
+                        <div class="icon-menu-sub">
+                          <div class="ic-nill-core" *ngIf="noNots" style="padding: 16px">
+                            <div class="icon" style="margin-bottom: 5px;text-align:center">
+                              <i nz-icon type="bell" theme="fill" style="font-size:25px"></i>                        </div>
+                            <h6 class="icon-menu-h">
+                              All cleaned up, you've no notifications!
+                            </h6>
+                          </div>
+                          <div class="ic-notifications-div" id="style-2">
+                            <div>
+                              <div class="notification" *ngFor="let n of notifications">
+                                <div class="n-left">
+                                  <div class="nl-img">
+                                    <img src="{{n.image}}" alt="">
+                                  </div>
+                                      </div>
+                                      <div class="n-middle">
+                                        <div class="n-text">
+                                      {{n.message}}
+                                    </div>
+                                    <div class="n-time">
+                                      {{n.date}}
+                                    </div>
+                                  </div>
+                                
+                                </div>
+                              </div>
+                            </div>
+                            <div class="icon-menu-noti" style="cursor:pointer" *ngIf="notifications.length > 0" routerLink='/notifications'>
+                              <h5 class="noti">View all Notifications</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </nz-dropdown>
+              </div>
+              <div>
+                  <nz-dropdown [nzPlacement]="'bottomRight'">
+                      <a nz-dropdown>
+                        <nz-badge [nzCount]="notCount" [nzOverflowCount]="10">
+                          <a class="head-example"><i nz-icon type="shopping" style="font-size:25px"></i></a>
+                        </nz-badge>
+                      </a>
+                      <div class="icon-menu" nz-menu nzSelectable>
+                        <div class="icon-menu-sub">
+                          <div class="ic-nill-core" *ngIf="noNots" style="padding: 16px">
+                            <div class="icon" style="margin-bottom: 5px;text-align:center">
+                              <i nz-icon type="shopping" theme="fill" style="font-size:25px"></i>                        </div>
+                            <h6 class="icon-menu-h">
+                              All cleaned up, you've no notifications!
+                            </h6>
+                          </div>
+                          <div class="ic-notifications-div" id="style-2">
+                            <div>
+                              <div class="notification" *ngFor="let n of notifications">
+                                <div class="n-left">
+                                  <div class="nl-img">
+                                    <img src="{{n.image}}" alt="">
+                                  </div>
+                                      </div>
+                                      <div class="n-middle">
+                                        <div class="n-text">
+                                      {{n.message}}
+                                    </div>
+                                    <div class="n-time">
+                                      {{n.date}}
+                                    </div>
+                                  </div>
+                                
+                                </div>
+                              </div>
+                            </div>
+                            <div class="icon-menu-noti" style="cursor:pointer" *ngIf="notifications.length > 0" routerLink='/notifications'>
+                              <h5 class="noti">View all Notifications</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </nz-dropdown>
+              </div>
+              <div>
+                  <nz-dropdown [nzPlacement]="'bottomRight'">
+                      <a nz-dropdown>
+                        <nz-badge [nzCount]="notCount" [nzOverflowCount]="10">
+                          <a class="head-example"><i nz-icon type="heart" style="font-size:25px"></i></a>
+                        </nz-badge>
+                      </a>
+                      <div class="icon-menu" nz-menu nzSelectable>
+                        <div class="icon-menu-sub">
+                          <div class="ic-nill-core" *ngIf="noNots" style="padding: 16px">
+                            <div class="icon" style="margin-bottom: 5px;text-align:center">
+                              <i nz-icon type="heart" theme="fill" style="font-size:25px"></i>                        </div>
+                            <h6 class="icon-menu-h">
+                              All cleaned up, you've no notifications!
+                            </h6>
+                          </div>
+                          <div class="ic-notifications-div" id="style-2">
+                            <div>
+                              <div class="notification" *ngFor="let n of notifications">
+                                <div class="n-left">
+                                  <div class="nl-img">
+                                    <img src="{{n.image}}" alt="">
+                                  </div>
+                                      </div>
+                                      <div class="n-middle">
+                                        <div class="n-text">
+                                      {{n.message}}
+                                    </div>
+                                    <div class="n-time">
+                                      {{n.date}}
+                                    </div>
+                                  </div>
+                                
+                                </div>
+                              </div>
+                            </div>
+                            <div class="icon-menu-noti" style="cursor:pointer" *ngIf="notifications.length > 0" routerLink='/notifications'>
+                              <h5 class="noti">View all Notifications</h5>
+                            </div>
+                          </div>
+                        </div>
+                      </nz-dropdown>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="main-header-bottom">
+      <ul class="main-header-bottom-inner">
+        <li>
+          <a>HOME</a>
+        </li>
+        <li>
+          <a>CATEGORIES</a>
+        </li>
+        <li>
+            <a>ABOUT</a>
+          </li>
+          <li>
+              <a>CONTACT</a>
+            </li>
+      </ul>
+    </div>
+    </div>
+  </div>

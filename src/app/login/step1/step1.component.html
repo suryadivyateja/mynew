@@ -1,0 +1,10 @@
+<div class="cs1">
+  <h3 class="text-center" style="margin:0px !important">User Name</h3>
+  <p class="text-muted text-center">Provide the email address / mobile credentials that are provided at the time of registration.</p>
+  <form #f="ngForm" (ngSubmit)="f.form.valid && step1()" id="s1">
+    <input type="text" name="title" nz-input placeholder="input course title" [(ngModel)]="username" #t="ngModel" [ngClass]="{'is-invalid':t.errors && (t.dirty || t.touched || f.submitted)}" required >
+  </form>
+  <div style="float: right;margin-top: 10px;">
+    <button nz-button nzType="default" form="s1">Next</button>
+  </div>
+</div>
